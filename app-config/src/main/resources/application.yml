@@ -1,0 +1,27 @@
+spring:
+    application:
+        name: app-config
+
+server:
+    port: 8080
+app:
+    name: MyKotlinApp
+    timeout: 30
+
+---
+spring:
+    config:
+        activate:
+            on-profile: dev
+app:
+    name: MyKotlinApp-Dev
+    timeout: 60
+
+---
+spring:
+    config:
+        activate:
+            on-profile: prod
+app:
+    name: MyKotlinApp-Prod
+    timeout: 120
