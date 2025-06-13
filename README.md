@@ -8,6 +8,9 @@ The repository contains the following modules:
 
 - **app-config**: Demonstrates Spring Boot configuration management with different configuration approaches and profiles.
 - **app-logger**: Demonstrates logging in a Spring Boot application.
+- **batch-chunk**: Demonstrates Spring Batch chunk-oriented processing.
+- **batch-tasklet**: Demonstrates Spring Batch tasklet-based processing.
+- **batch-multi-config**: Demonstrates configuring and running multiple Spring Batch jobs in a single application.
 
 ## Prerequisites
 
@@ -18,3 +21,6 @@ For detailed information about each module, including build and run instructions
 
 - [app-config](./app-config/README.md)
 - [app-logger](./app-logger/README.md)
+- [batch-chunk](./batch-chunk/README.md)
+- [batch-tasklet](./batch-tasklet/README.md)
+- [batch-multi-config](./batch-multi-config/README.md)

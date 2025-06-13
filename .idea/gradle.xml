@@ -10,6 +10,38 @@
           </set>
         </option>
       </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/app-logger" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/app-logger" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/batch-chunk" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/batch-chunk" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/batch-multi-config" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/batch-multi-config" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/batch-tasklet" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/batch-tasklet" />
+          </set>
+        </option>
+      </GradleProjectSettings>
     </option>
   </component>
 </project>

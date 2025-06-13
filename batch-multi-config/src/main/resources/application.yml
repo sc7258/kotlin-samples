@@ -1,0 +1,23 @@
+spring:
+    application:
+        name: batch-multi-config
+
+    datasource:
+        url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false
+        driver-class-name: org.h2.Driver
+        username: sa
+        password:
+    batch:
+        job:
+            enabled: true               # 애플리케이션 시작 시 자동 Job 실행 방지
+            name: jobA
+
+        jdbc:
+            initialize-schema: always
+    h2:
+        console:
+            enabled: true                # H2 콘솔 켜기 (웹브라우저로 확인 가능)
+            path: /h2-console
+logging:
+    level:
+        org.springframework.batch: DEBUG

@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="batch-multi-job" target="17" />
+      <module name="batch-multi-job.main" target="17" />
+      <module name="batch-multi-job.test" target="17" />
+    </bytecodeTargetLevel>
+  </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="app-config" options="-parameters" />
       <module name="app-config.main" options="-parameters" />
       <module name="app-config.test" options="-parameters" />
+      <module name="app-logger" options="-parameters" />
+      <module name="app-logger.main" options="-parameters" />
+      <module name="app-logger.test" options="-parameters" />
+      <module name="batch-chunk" options="-parameters" />
+      <module name="batch-chunk.main" options="-parameters" />
+      <module name="batch-chunk.test" options="-parameters" />
+      <module name="batch-multi-config" options="-parameters" />
+      <module name="batch-multi-config.main" options="-parameters" />
+      <module name="batch-multi-config.test" options="-parameters" />
+      <module name="batch-multi-job" options="-parameters" />
+      <module name="batch-multi-job.main" options="-parameters" />
+      <module name="batch-multi-job.test" options="-parameters" />
+      <module name="batch-tasklet" options="-parameters" />
+      <module name="batch-tasklet.main" options="-parameters" />
+      <module name="batch-tasklet.test" options="-parameters" />
     </option>
   </component>
 </project>

@@ -1,0 +1,24 @@
+spring.application:
+  name:
+    batch-tasklet
+
+logging:
+  level:
+    org:
+      springframework:
+        batch: DEBUG
+
+spring.batch:
+  job:
+    enabled: true
+    name: simple2TaskletJob
+
+spring.datasource:
+  url: jdbc:h2:mem:testdb
+  driverClassName: org.h2.Driver
+  username: sa
+  password:
+
+spring.h2:
+  console.enabled: true
+
