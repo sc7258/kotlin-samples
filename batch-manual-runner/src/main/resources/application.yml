@@ -1,0 +1,8 @@
+spring:
+    application:
+        name: batch-manual-runner
+
+    batch:
+        job:
+            enabled: true   # 자동 실행 OFF → ApplicationRunner에서 수동 실행
+            name:  jobA

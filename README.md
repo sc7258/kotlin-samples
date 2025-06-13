@@ -11,6 +11,7 @@ The repository contains the following modules:
 - **batch-chunk**: Demonstrates Spring Batch chunk-oriented processing.
 - **batch-tasklet**: Demonstrates Spring Batch tasklet-based processing.
 - **batch-multi-config**: Demonstrates configuring and running multiple Spring Batch jobs in a single application.
+- **batch-manual-runner**: Demonstrates how to configure and manually run Spring Batch jobs.
 
 ## Prerequisites
 
@@ -24,3 +25,4 @@ For detailed information about each module, including build and run instructions
 - [batch-chunk](./batch-chunk/README.md)
 - [batch-tasklet](./batch-tasklet/README.md)
 - [batch-multi-config](./batch-multi-config/README.md)
+- [batch-manual-runner](./batch-manual-runner/README.md)
