@@ -18,4 +18,5 @@ class SampleItemReader : ItemReader<String?> {
         }
         return null // null 반환 시 청크 반복 종료
     }
+
 }

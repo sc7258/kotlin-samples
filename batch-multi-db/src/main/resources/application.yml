@@ -1,0 +1,48 @@
+spring:
+    application:
+        name: batch-multi-db
+
+logging:
+    level:
+        org.springframework.batch: DEBUG
+        org.hibernate.SQL: DEBUG
+        org.hibernate.tool.schema: DEBUG # DDL 생성/실행 관련 로그에 매우 중요합니다.
+        # org.springframework.orm.jpa: DEBUG # 추가적인 JPA 관련 로그를 볼 수 있습니다.
+
+
+
+spring.batch:
+    job:
+        enabled: true               # 애플리케이션 시작 시 자동 Job 실행 방지
+        name: sampleJob
+    jdbc:
+        initialize-schema: always
+
+batch.datasource:
+    url: jdbc:mariadb://localhost:3306/BATCH_DB
+    username: orcmes
+    password: P@ssw0rd
+    driver-class-name: org.mariadb.jdbc.Driver
+
+#batch.datasource:
+#    url: jdbc:h2:mem:BATCH_DB;DB_CLOSE_DELAY=-1
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+
+spring.datasource:
+    url: jdbc:mariadb://localhost:3306/BATCH_APP
+    username: orcmes
+    password: P@ssw0rd
+    driver-class-name: org.mariadb.jdbc.Driver
+
+spring.jpa:
+    hibernate:
+        ddl-auto: create
+    show-sql: true
+    properties:
+        hibernate:
+            format_sql: true
+            dialect: org.hibernate.dialect.MariaDBDialect
+
+
