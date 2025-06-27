@@ -1,0 +1,91 @@
+openapi: 3.0.1
+info:
+  title: TVRO Antenna API
+  description: TVRO 안테나 장비의 상태를 조회하고 명령을 내리는 API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/v1
+    description: Local server
+paths:
+  /tvro/status/{antennaId}:
+    get:
+      summary: 안테나 상태 조회
+      tags:
+        - TVRO
+      operationId: getTvroStatusByAntennaId
+      parameters:
+        - name: antennaId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: 조회할 안테나의 ID
+      responses:
+        '200':
+          description: 성공적인 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TvroStatusResponse'
+        '404':
+          description: 해당 ID의 안테나를 찾을 수 없음
+  /tvro/command:
+    post:
+      summary: 안테나에 명령 전송
+      tags:
+        - TVRO
+      operationId: postTvroCommand
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TvroCommandRequest'
+      responses:
+        '202':
+          description: 명령이 성공적으로 접수됨
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TvroApiResponse'
+
+components:
+  schemas:
+    TvroStatusResponse:
+      type: object
+      properties:
+        antennaId:
+          type: string
+        signalStrength:
+          type: integer
+        status:
+          type: string
+          enum: [ 'TRACKING', 'IDLE', 'SEARCHING', 'ERROR' ]
+        azimuth:
+          type: number
+          format: double
+        elevation:
+          type: number
+          format: double
+    TvroCommandRequest:
+      type: object
+      required:
+        - antennaId
+        - command
+      properties:
+        antennaId:
+          type: string
+        command:
+          type: string
+          description: "실행할 명령 (e.g., 'REBOOT', 'SET_TARGET')"
+        parameters:
+          type: object
+          additionalProperties: true
+    TvroApiResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        timestamp:
+          type: string
+          format: date-time

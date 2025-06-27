@@ -1,0 +1,7 @@
+# application.yml
+server:
+    port: 8080 # 애플리케이션이 실행될 포트 번호 (기본값 8080)
+
+spring:
+    application:
+        name: api-versioning-application # 애플리케이션 이름 설정

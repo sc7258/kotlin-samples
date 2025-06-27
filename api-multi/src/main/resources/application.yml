@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: api-multi
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+# 로깅 레벨 설정 (필요에 따라 주석 해제하여 사용)
+# logging:
+#   level:
+#     com.sc7258.apimulti: DEBUG
+#     org.springframework.web: DEBUG
+logging:
+  level:
+    org.springdoc: DEBUG
+    org.springframework.web: DEBUG
+
+# 서버 포트 설정
+server:
+  port: 8080
+  # context-path는 애플리케이션 전체에 영향을 주므로 제거합니다.
+  # servlet:
+  #   context-path: /api/v1
+
+# --- SpringDoc & OpenAPI Generator 설정 ---
+
+# OpenAPI Generator가 생성하는 컨트롤러의 기본 경로를 지정하기 위해 이 블록을 다시 사용합니다.
+# 이 설정은 springdoc이 아닌, build.gradle.kts의 openapi-generator가 사용합니다.
+#openapi:
+#  tVROAntennaAPI:
+#    base-path: /api/v1
+#  lBandServiceAPI:
+#    base-path: /api/v1
+#  intellianDeviceAPI:
+#    base-path: /api/v1
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+  api-docs:
+    path: /v3/api-docs
+  # 그룹핑 전략을 전체 경로(full path) 기준으로 변경합니다.
+  group-configs:
+    - group: tvro-antenna-api
+      display-name: TVRO Antenna API
+      packages-to-scan: com.sc7258.apimulti.api.tvro
+    - group: lband-service-api
+      display-name: L-Band Service API
+      packages-to-scan: com.sc7258.apimulti.api.lband
+    - group: intellian-device-api
+      display-name: Intellian Device API
+      packages-to-scan: com.sc7258.apimulti.api.intellian
+
+  spring.devtools.restart:
+    log-enabled: true
+    log-condition-evaluation-delta: true
+

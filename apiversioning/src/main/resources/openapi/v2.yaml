@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  title: User API v2
+  version: 2.0.0
+  description: API for managing users - Version 2 (includes age)
+
+servers:
+  - url: /api/v2
+
+paths:
+  /users:
+    get:
+      summary: Get all users (v2)
+      operationId: getAllUsersV2
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserV2'
+  /users/{id}:
+    get:
+      summary: Get user by ID (v2)
+      operationId: getUserByIdV2
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the user to retrieve
+      responses:
+        '200':
+          description: User object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserV2'
+        '404':
+          description: User not found
+
+components:
+  schemas:
+    UserV2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: User ID
+          example: "1"
+        name:
+          type: string
+          description: User's name
+          example: "Jane Doe"
+        email:
+          type: string
+          description: User's email address
+          example: "jane.doe@example.com"
+        age:
+          type: integer
+          description: User's age
+          example: 30

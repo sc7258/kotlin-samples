@@ -1,0 +1,61 @@
+openapi: 3.0.0
+info:
+  title: User API v1
+  version: 1.0.0
+  description: API for managing users - Version 1
+
+servers:
+  - url: /api/v1
+
+paths:
+  /users:
+    get:
+      summary: Get all users (v1)
+      operationId: getAllUsersV1
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserV1'
+  /users/{id}:
+    get:
+      summary: Get user by ID (v1)
+      operationId: getUserByIdV1
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the user to retrieve
+      responses:
+        '200':
+          description: User object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserV1'
+        '404':
+          description: User not found
+
+components:
+  schemas:
+    UserV1:
+      type: object
+      properties:
+        id:
+          type: string
+          description: User ID
+          example: "1"
+        name:
+          type: string
+          description: User's name
+          example: "John Doe"
+        email:
+          type: string
+          description: User's email address
+          example: "john.doe@example.com"

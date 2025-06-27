@@ -1,0 +1,92 @@
+openapi: 3.0.1
+info:
+  title: L-Band Service API
+  description: L-Band 단말기의 상태를 조회하고 서비스를 관리하는 API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/v1
+    description: Local server
+paths:
+  /lband/status/{terminalId}:
+    get:
+      summary: L-Band 단말기 상태 조회
+      tags:
+        - L-Band
+      operationId: getLbandStatusByTerminalId
+      parameters:
+        - name: terminalId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: 조회할 단말기의 ID
+      responses:
+        '200':
+          description: 성공적인 응답
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LbandStatusResponse'
+        '404':
+          description: 해당 ID의 단말기를 찾을 수 없음
+  /lband/service/activate:
+    post:
+      summary: L-Band 서비스 활성화
+      tags:
+        - L-Band
+      operationId: postLbandServiceActivate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceActivationRequest'
+      responses:
+        '200':
+          description: 서비스가 성공적으로 활성화됨
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LbandApiResponse'
+
+components:
+  schemas:
+    LbandStatusResponse:
+      type: object
+      properties:
+        terminalId:
+          type: string
+        serviceStatus:
+          type: string
+          enum: [ 'ACTIVE', 'INACTIVE', 'SUSPENDED', 'PROVISIONING' ]
+        signalQuality:
+          type: integer
+          description: "신호 품질 (dB)"
+        dataUsage:
+          type: object
+          properties:
+            totalMb:
+              type: number
+              format: double
+            billingCycleStart:
+              type: string
+              format: date
+    ServiceActivationRequest:
+      type: object
+      required:
+        - terminalId
+        - plan
+      properties:
+        terminalId:
+          type: string
+        plan:
+          type: string
+          description: "활성화할 서비스 플랜 (e.g., 'basic-1gb', 'premium-10gb')"
+    LbandApiResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        transactionId:
+          type: string
+          format: uuid
