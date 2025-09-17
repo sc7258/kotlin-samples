@@ -1,4 +1,4 @@
-package com.sc7258.simpleorderhexagonal.adapter.out.jpa.entity
+package com.sc7258.simpleorderhexagonal.adapter.out.jpa
 
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
